@@ -2,15 +2,29 @@ from tkinter import *
 from logic import determinant
 from logic import roots 
 
-root = Tk()
-root.title("Quadratic Equation Solver")
+def clear_placeholder(event, widget, placeholder_text):
+    if widget.get("1.0", "end-1c") == placeholder_text:
+        widget.delete("1.0", "end-1c")
+        widget.config(fg="black")
+
+def restore_placeholder(widget, placeholder_text):
+    if not widget.get("1.0", "end-1c"):
+        widget.insert("1.0", placeholder_text)
+        widget.config(fg="gray")
 
 def clear_labels():
-    label1.config(text="The Determinant is :")
-    label2.config(text="The Roots are :")
     a.delete("1.0", "end")
     b.delete("1.0", "end")
     c.delete("1.0", "end")
+    
+    # Restore placeholders
+    restore_placeholder(a, placeholder_text_a)
+    restore_placeholder(b, placeholder_text_b)
+    restore_placeholder(c, placeholder_text_c)
+
+    # Restore original label text
+    label2.config(text="The Determinant is : ")
+    label3.config(text="The Roots are : ")
 
 def equal_click():
     x = int(a.get("1.0", "end"))
@@ -19,17 +33,22 @@ def equal_click():
     d = determinant.det(x, y, z)
     r = roots.root(x, y, z)
 
-    label1.config(text="The Determinant is : " + str(d))
-    label2.config(text="The Roots are : " + str(r))
+    label2.config(text="The Determinant is : " + str(d))
+    label3.config(text="The Roots are : " + str(r))
+
+root = Tk()
+root.title("Quadratic Equation Solver")
 
 a = Text(root, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
 b = Text(root, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
 c = Text(root, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
 
-label1 = Label(root, text="Enter the Coefficients of x\u00b2, x and the constant respectively")
+# Defining the Labels
+label1 = Label(root, text="Enter the Coefficients of x\u00b2, x, and the constant respectively")
 label2 = Label(root, text="The Determinant is :")
 label3 = Label(root, text="The Roots are :")
 
+# Defining the Empty Labels
 empty0 = Label(root, text=" ")
 empty1 = Label(root, text=" ")
 empty2 = Label(root, text=" ")
@@ -42,11 +61,31 @@ empty11 = Label(root, text=" ")
 empty12 = Label(root, text=" ")
 empty13 = Label(root, text="    ")
 
+# Defining the Buttons
 calculate_roots = Button(root, text="Calculate Roots", command=equal_click)
 
 clear_button = Button(root, text="Clear", command=clear_labels)
 
+# Placeholder for x square
+placeholder_text_a = "x²"
+a.insert("1.0", placeholder_text_a)
+a.config(fg="gray")
+a.bind("<FocusIn>", lambda event, widget=a, placeholder=placeholder_text_a: clear_placeholder(event, widget, placeholder))
 
+# Placeholder for x
+placeholder_text_b = "x"
+b.insert("1.0", placeholder_text_b)
+b.config(fg="gray")
+b.bind("<FocusIn>", lambda event, widget=b, placeholder=placeholder_text_b: clear_placeholder(event, widget, placeholder))
+
+# Placeholder for constant
+placeholder_text_c = "Constant"
+c.insert("1.0", placeholder_text_c)
+c.config(fg="gray")
+c.bind("<FocusIn>", lambda event, widget=c, placeholder=placeholder_text_c: clear_placeholder(event, widget, placeholder))
+
+
+# Assembling the GUI
 empty0.grid(row=0, column=0)
 
 label1.grid(row=1, column=1, columnspan=5)
