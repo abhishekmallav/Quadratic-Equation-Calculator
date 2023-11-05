@@ -90,7 +90,7 @@ c = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
 # Defining the Labels
 label1 = Label(frame0, text="Enter the Coefficients of x\u00b2, x, and the constant respectively")
 label2 = Label(frame2, text="The Determinant is :")
-label3 = Label(frame2, text="The Roots are :")
+label3 = Label(frame2, text="The Roots are :", wraplength=500)
 
 # Defining the Empty Labels
 empty0 = Label(root, text=" ")
