@@ -47,3 +47,5 @@ pip install -r requirements.txt
 
 
 ![](https://github.com/abhishekmallav/Quadratic-Equation-Solver-in-Python/blob/main/preview/calculator-01.png)
+
+![](https://github.com/abhishekmallav/Quadratic-Equation-Solver-in-Python/blob/main/preview/screenshot.png)
