@@ -4,8 +4,8 @@ import math
 
 def root (a,b,c):
     d = ((b**2)-(4*a*c))
-    d = int(d)
-    if int(d) >= 0 :
+    d = float(d)
+    if d >= 0 :
         d1 = math.sqrt((b**2)-(4*a*c))
         root_1 = (-b - d1)/(2*a)
         root_2 = (-b + d1)/(2*a)
