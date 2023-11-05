@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 root = Tk()
 root.title("Quadratic Equation Solver")
 root.geometry("550x400")
+font1 = ("Bahnschrift", 12)
+font2 = ("JetBrainsMono NF", 10)
 
 def clear_placeholder(event, widget, placeholder_text):
     if widget.get("1.0", "end-1c") == placeholder_text:
@@ -83,14 +85,14 @@ frame1 = LabelFrame(root, padx=10, pady=10)
 frame2 = LabelFrame(root, padx=10, pady=10)
 frame3 = LabelFrame(root, padx=10, pady=10)
 
-a = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
-b = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
-c = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
+a = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10, font=font2)
+b = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10, font=font2)
+c = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10, font=font2)
 
 # Defining the Labels
-label1 = Label(frame0, text="Enter the Coefficients of x\u00b2, x, and the constant respectively")
-label2 = Label(frame2, text="The Determinant is :")
-label3 = Label(frame2, text="The Roots are :", wraplength=500)
+label1 = Label(frame0, text="Enter the Coefficients of x\u00b2, x, and the constant respectively", wraplength=500, font=font1)
+label2 = Label(frame2, text="The Determinant is :", font=font1)
+label3 = Label(frame2, text="The Roots are :", wraplength=500, font=font1)
 
 # Defining the Empty Labels
 empty0 = Label(root, text=" ")
@@ -106,12 +108,12 @@ empty12 = Label(frame1, text=" ")
 empty13 = Label(frame1, text=" ")
 
 # Defining the Buttons
-calculate_roots = Button(root, text="Calculate Roots", command=equal_click)
+calculate_roots = Button(root, text="Calculate Roots", command=equal_click, font=font2)
 
-exit_button = Button(frame3, text="Exit", command=root.quit)
-clear_button = Button(frame3, text="Clear", command=clear_labels)
+exit_button = Button(frame3, text="Exit", command=root.quit, font=font2)
+clear_button = Button(frame3, text="Clear", command=clear_labels, font=font2)
 
-graph = Button(frame3, text="Graph", command=show_graph)
+graph = Button(frame3, text="Graph", command=show_graph, font=font2)
 
 # Placeholder for x square
 placeholder_text_a = "x²"
