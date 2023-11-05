@@ -1,6 +1,14 @@
 from tkinter import *
 from logic import determinant
 from logic import roots 
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+
+root = Tk()
+root.title("Quadratic Equation Solver")
+root.geometry("550x400")
 
 def clear_placeholder(event, widget, placeholder_text):
     if widget.get("1.0", "end-1c") == placeholder_text:
@@ -13,6 +21,7 @@ def restore_placeholder(widget, placeholder_text):
         widget.config(fg="gray")
 
 def clear_labels():
+
     a.delete("1.0", "end")
     b.delete("1.0", "end")
     c.delete("1.0", "end")
@@ -23,30 +32,65 @@ def clear_labels():
     restore_placeholder(c, placeholder_text_c)
 
     # Restore original label text
-    label2.config(text="The Determinant is : ")
-    label3.config(text="The Roots are : ")
+    label2.config(text="The Determinant is :")
+    label3.config(text="The Roots are :")
+    plt.close('all')
+    #if graph_win:
+        #graph_win.destroy()
 
 def equal_click():
-    x = int(a.get("1.0", "end"))
-    y = int(b.get("1.0", "end"))
-    z = int(c.get("1.0", "end"))
+    global x
+    global y
+    global z
+    x = float(a.get("1.0", "end"))
+    y = float(b.get("1.0", "end"))
+    z = float(c.get("1.0", "end"))
     d = determinant.det(x, y, z)
     r = roots.root(x, y, z)
 
     label2.config(text="The Determinant is : " + str(d))
     label3.config(text="The Roots are : " + str(r))
 
-root = Tk()
-root.title("Quadratic Equation Solver")
+def show_graph():
+    #global graph_lbl
+    #global graph_btn
+    #global graph_win
+    #graph_win = Toplevel()
+    #graph_win.geometry("500x400")
+    plot_quadratic_eq(x, y, z)
+    plt.legend()
+    plt.grid(True)  # Add grid lines
+    plt.show()
+    #graph_lbl = Label(graph_win, text="Graph Below").pack()
+    #graph_btn = Button(graph_win, text="Close", command=graph_win.destroy).pack()
 
-a = Text(root, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
-b = Text(root, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
-c = Text(root, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
+def plot_quadratic_eq(a, b, c):
+    x = list(range(-10, 11))
+    y = [a * i**2 + b * i + c for i in x]
+    
+    # Plot the quadratic curve
+    plt.plot(x, y, linestyle='-', color='red')
+    
+    # Add horizontal (y = 0) and vertical (x = 0) lines
+    plt.axhline(0, color='black', linestyle='--')
+    plt.axvline(0, color='black', linestyle='--')
+    plt.xlabel('X-Axis')
+    plt.ylabel('Y-Axis')
+
+# Defining the Frames
+frame0 = LabelFrame(root, padx=10, pady=10)
+frame1 = LabelFrame(root, padx=10, pady=10)
+frame2 = LabelFrame(root, padx=10, pady=10)
+frame3 = LabelFrame(root, padx=10, pady=10)
+
+a = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
+b = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
+c = Text(frame1, width=5, height=1, bd=2, relief=FLAT, padx=10, pady=10)
 
 # Defining the Labels
-label1 = Label(root, text="Enter the Coefficients of x\u00b2, x, and the constant respectively")
-label2 = Label(root, text="The Determinant is :")
-label3 = Label(root, text="The Roots are :")
+label1 = Label(frame0, text="Enter the Coefficients of x\u00b2, x, and the constant respectively")
+label2 = Label(frame2, text="The Determinant is :")
+label3 = Label(frame2, text="The Roots are :")
 
 # Defining the Empty Labels
 empty0 = Label(root, text=" ")
@@ -56,15 +100,18 @@ empty3 = Label(root, text=" ")
 empty4 = Label(root, text=" ")
 empty5 = Label(root, text=" ")
 
-empty10 = Label(root, text="    ")
-empty11 = Label(root, text=" ")
-empty12 = Label(root, text=" ")
-empty13 = Label(root, text="    ")
+empty10 = Label(frame1, text=" ")
+empty11 = Label(frame1, text=" ")
+empty12 = Label(frame1, text=" ")
+empty13 = Label(frame1, text=" ")
 
 # Defining the Buttons
 calculate_roots = Button(root, text="Calculate Roots", command=equal_click)
 
-clear_button = Button(root, text="Clear", command=clear_labels)
+exit_button = Button(frame3, text="Exit", command=root.quit)
+clear_button = Button(frame3, text="Clear", command=clear_labels)
+
+graph = Button(frame3, text="Graph", command=show_graph)
 
 # Placeholder for x square
 placeholder_text_a = "x²"
@@ -84,36 +131,39 @@ c.insert("1.0", placeholder_text_c)
 c.config(fg="gray")
 c.bind("<FocusIn>", lambda event, widget=c, placeholder=placeholder_text_c: clear_placeholder(event, widget, placeholder))
 
-
 # Assembling the GUI
-empty0.grid(row=0, column=0)
+#empty0.pack()
+empty1.pack()
 
-label1.grid(row=1, column=1, columnspan=5)
+label1.pack()
+frame0.pack()
 
-empty1.grid(row=2, column=0, columnspan=3)
+a.grid(row=0, column=1)
+b.grid(row=0, column=3)
+c.grid(row=0, column=5)
 
-a.grid(row=3, column=1)
-b.grid(row=3, column=3)
-c.grid(row=3, column=5)
+empty10.grid(row=0, column=0)
+empty11.grid(row=0, column=2)
+empty12.grid(row=0, column=4)
+empty13.grid(row=0, column=6)
+frame1.pack(pady=10)
 
-empty10.grid(row=3, column=0)
-empty11.grid(row=3, column=2)
-empty12.grid(row=3, column=4)
-empty13.grid(row=3, column=6)
+#empty2.pack()
 
-empty2.grid(row=4, column=0)
+calculate_roots.pack()
 
-calculate_roots.grid(row=5, column=2, columnspan=3)
+#empty3.pack()
 
-empty3.grid(row=6, column=0)
+label2.pack()
+label3.pack()
+frame2.pack(pady=25)
 
-label2.grid(row=7, column=2, columnspan=3)
-label3.grid(row=8, column=2, columnspan=3)
+#empty4.pack()
+exit_button.grid(row=1, column=2, padx=10)
+clear_button.grid(row=1, column=3, padx=10)
+graph.grid(row=1, column=4, padx=10)
+frame3.pack()
 
-empty4.grid(row=9, column=0)
-
-clear_button.grid(row=10, column=2, columnspan=3)
-
-empty5.grid(row=11, column=0)
+empty5.pack()
 
 root.mainloop()
