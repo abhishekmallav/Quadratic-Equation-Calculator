@@ -49,7 +49,7 @@ def equal_click():
     r = roots.root(x, y, z)
 
     label2.config(text="The Determinant is : " + str(d))
-    label3.config(text="The Roots are : " + str(r))
+    label3.config(text="The Roots are : \n" + str(r))
 
 def show_graph():
     #global graph_lbl
