@@ -18,8 +18,6 @@ pip install -r requirements.txt
 
 - tkinter (comes pre-installed with python)
 
-
-
 #### Overview of the libraries/packages/modules used
 
 - All the GUI is build using Tkinter library
@@ -31,8 +29,6 @@ pip install -r requirements.txt
 - cmath module is used to calculate the imaginary roots
 
 - matplot library is used to plot the quadratic graph of the data provided by the user
-
-
 
 #### How does the calculator works
 
@@ -47,3 +43,7 @@ pip install -r requirements.txt
 5. If you want to enter another values press the **Clear** button. It will clear the current values and close the current graph window
 
 6. If you want to exit press the **Exit** button or close via the cross in the title bar
+
+
+
+![](https://github.com/abhishekmallav/Quadratic-Equation-Solver-in-Python/blob/main/preview/calculator-01.png)
