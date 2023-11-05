@@ -8,7 +8,7 @@ required dependencies can be installed by
 pip install -r requirements.txt
 ```
 
-##### Python packages/modules used
+#### Python packages/modules used
 
 - matplot
 
@@ -43,6 +43,8 @@ pip install -r requirements.txt
 5. If you want to enter another values press the **Clear** button. It will clear the current values and close the current graph window
 
 6. If you want to exit press the **Exit** button or close via the cross in the title bar
+
+---
 
 
 
