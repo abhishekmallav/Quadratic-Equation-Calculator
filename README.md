@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 - matplot library is used to plot the quadratic graph of the data provided by the user
 
-#### How does the calculator works
+#### How to use the calculator
 
 1. Enter the Coefficients of x², x and the constant in the respective boxes
 
