@@ -2,9 +2,6 @@ from tkinter import *
 from logic import determinant
 from logic import roots 
 import matplotlib.pyplot as plt
-#import numpy as np
-#from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
 
 root = Tk()
 root.title("Quadratic Equation Solver")
@@ -37,8 +34,6 @@ def clear_labels():
     label2.config(text="The Determinant is :")
     label3.config(text="The Roots are :")
     plt.close('all')
-    #if graph_win:
-        #graph_win.destroy()
 
 def equal_click():
     global x
@@ -54,17 +49,10 @@ def equal_click():
     label3.config(text="The Roots are : \n" + str(r))
 
 def show_graph():
-    #global graph_lbl
-    #global graph_btn
-    #global graph_win
-    #graph_win = Toplevel()
-    #graph_win.geometry("500x400")
     plot_quadratic_eq(x, y, z)
     plt.legend()
-    plt.grid(True)  # Add grid lines
+    plt.grid(True)
     plt.show()
-    #graph_lbl = Label(graph_win, text="Graph Below").pack()
-    #graph_btn = Button(graph_win, text="Close", command=graph_win.destroy).pack()
 
 def plot_quadratic_eq(a, b, c):
     x = list(range(-10, 11))
@@ -134,7 +122,7 @@ c.config(fg="gray")
 c.bind("<FocusIn>", lambda event, widget=c, placeholder=placeholder_text_c: clear_placeholder(event, widget, placeholder))
 
 # Assembling the GUI
-#empty0.pack()
+
 empty1.pack()
 
 label1.pack()
@@ -150,17 +138,12 @@ empty12.grid(row=0, column=4)
 empty13.grid(row=0, column=6)
 frame1.pack(pady=10)
 
-#empty2.pack()
-
 calculate_roots.pack()
-
-#empty3.pack()
 
 label2.pack()
 label3.pack()
 frame2.pack(pady=25)
 
-#empty4.pack()
 exit_button.grid(row=1, column=2, padx=10)
 clear_button.grid(row=1, column=3, padx=10)
 graph.grid(row=1, column=4, padx=10)
