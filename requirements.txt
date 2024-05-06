@@ -1,2 +1,1 @@
 matplotlib==3.4.3
-no more req
