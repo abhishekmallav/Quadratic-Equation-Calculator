@@ -4,7 +4,7 @@ from logic import roots
 import matplotlib.pyplot as plt
 
 root = Tk()
-root.title("Quadratic Equation Solver")
+root.title("Quadratic Equation Calculator")
 root.geometry("550x400")
 font1 = ("Bahnschrift", 12)
 font2 = ("JetBrainsMono NF", 10)
