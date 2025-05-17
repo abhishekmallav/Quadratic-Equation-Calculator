@@ -1,4 +1,4 @@
-# Quadratic-Equation-Solver-in-Python
+# Quadratic-Equation-Calculator
 
 ### GUI Quadratic Equation Solver in Python using Tkinter
 
