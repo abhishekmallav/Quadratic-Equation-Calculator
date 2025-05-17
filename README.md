@@ -1,6 +1,6 @@
 # Quadratic-Equation-Calculator
 
-### GUI Quadratic Equation Solver in Python using Tkinter
+### GUI Quadratic Equation Calculator in Python using Tkinter
 
 required dependencies can be installed by
 
