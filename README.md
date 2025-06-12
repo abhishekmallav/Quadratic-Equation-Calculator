@@ -44,7 +44,6 @@ pip install -r requirements.txt
 
 6. If you want to exit press the **Exit** button or close via the cross in the title bar
 
-   pr created
 
 
 ---
