@@ -44,6 +44,8 @@ pip install -r requirements.txt
 
 6. If you want to exit press the **Exit** button or close via the cross in the title bar
 
+for github pull req
+
 ---
 
 ![](https://github.com/abhishekmallav/Quadratic-Equation-Solver-in-Python/blob/main/preview/calculator-01.png)
