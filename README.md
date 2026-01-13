@@ -158,9 +158,7 @@ r = roots.root(a, b, c)
 
 ## Screenshots
 
-![Calculator UI](https://github.com/abhishekmallav/Quadratic-Equation-Calculator/blob/main/preview/calculator-01.png)
-
-![Graph Example](https://github.com/abhishekmallav/Quadratic-Equation-Calculator/blob/main/preview/screenshot.png)
+![Graph Example](./preview/screenshot.png)
 
 ---
 
