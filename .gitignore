@@ -2,3 +2,10 @@ test.py
 gui_test.py
 *.pyc
 /.vscode
+
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+__pycache__/
+*.egg-info/
